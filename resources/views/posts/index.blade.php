@@ -6,6 +6,9 @@
     Listado de Posts @if(isset($flag)) Categoria: {{$id}} @endif
 @endsection
 @section('contenido')
+@if(session('mensaje'))
+<x-alerta1>{{session('mensaje')}}</x-alerta1>
+@endif
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="mb-4">
         <a href="{{route('posts.create')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -47,10 +50,14 @@
                             {{ $item->resumen }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            Edit
+                            <a href="{{route('posts.edit', $item)}}" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-edit"></i></a>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            Borrar
+                            <form action="{{route('posts.destroy', $item)}}" method="POST">
+                                @csrf
+                                @method("DELETE")
+                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

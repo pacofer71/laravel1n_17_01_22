@@ -28,9 +28,7 @@
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         DESCRIPCIÓN
                     </th>
-                    <th scope="col" colspan="2">
-
-                    </th>
+                    <th colspan="2"></th>
 
                 </tr>
                
@@ -43,7 +41,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     {{ $item->nombre }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
+                                <td class="px-6 py-4">
                                     {{ $item->descripcion }}
                                 </td>
                                 <td class="px-6 py-4">
